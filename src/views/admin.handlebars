@@ -1,0 +1,26 @@
+<h3>Usuario logeado: {{session}}</h3>
+<h4>LISTA DE USUARIOS REGISTRADOS</h4>
+
+<ul>
+    {{#each data}}
+    <li>Nombre y Apellido: {{this.full_name}}</li>
+    <div>
+        <p> Email: {{this.email}}</p>
+        <p> Nivel de usuario: {{this.role}}</p>
+        <div>
+            <p>Cambiar Role: 
+            <select name="" id="{{this._id}}" onchange="cambiarRole(this.id)">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="premium">Premium</option>
+            </select>
+            </p>
+        </div>
+        <div>
+            <p>Eliminar usuario: <button id="{{this._id}}" onclick="eliminarUsuario(this.id)">Eliminar Usuario</button></p>
+        </div>
+    </div>
+    {{/each}}
+</ul>
+
+<script src="/js/admin.js"></script>

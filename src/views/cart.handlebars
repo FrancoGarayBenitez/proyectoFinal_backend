@@ -1,0 +1,30 @@
+<div>
+    <h1>SOY EL CARRITO</h1>
+
+    <table>
+        <tr>
+            <th>NOMBRE</th>
+            <th>PRECIO POR UNIDAD</th>
+            <th>CANTIDAD</th>
+        </tr>
+        {{#each cart.products_list}}
+        <tr>
+            <td>{{this.product.nombre}}</td>
+            <td>${{this.product.precio}}</td>
+            <td>{{this.quantity}}</td>
+            <td><button id="{{this.product._id}}" onclick="deleteProductOfCart(this.id)">ELIMINAR</button></td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <div>
+        <h4>TOTAL: ${{sum}}</h4>
+        <button id="{{cart._id}}" onclick="deleteAllProductsOfCart(this.id)">VACIAR CARRITO</button>
+    </div>
+
+    <div>
+        <button id="{{cart._id}}" onclick="finalizePurchase(this.id)">CONFIRMAR COMPRA</button>
+    </div>
+</div>
+
+<script src="/js/cart.js"></script>

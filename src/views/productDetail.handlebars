@@ -1,0 +1,21 @@
+<div>
+    <h2>{{product.nombre}}</h3>
+    <p>{{product.categoria}}</p>
+    <p>${{product.precio}}</p>
+
+    {{#if faltaStock}}
+    <p>NO HAY STOCK DISPONIBLE</p>
+    {{else}}
+    <button id="{{product.stock}}" onclick="restar(this.id)">-</button>
+    <input id="inputQuantity" type="number" readonly value="1">
+    <button id="{{product.stock}}" onclick="sumar(this.id)">+</button>
+    <p id="stockMaximo"></p>
+    <button id="{{product._id}}" onclick="compra(this.id)">Agregar al Carrito</button>
+    {{/if}}
+</div>
+
+<div>
+    <a href="/api/cart/renderCart"><button>IR AL CARRITO</button></a>
+</div>
+
+<script src="/js/productDetail.js"></script>

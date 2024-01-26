@@ -1,0 +1,43 @@
+<form method="get" action="/api/sessions/logout">
+    <h1>Bienvenido</h1>
+    <p>Bienvenido {{user.full_name}}</p>
+    <p>Nivel de usuario: {{user.role}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Edad: {{user.age}}</p>
+    <p>Eres admin ? Tienes acceso a la lista de usuarios registrados: <a href="/api/users/usersView">Aquí</a></p>
+    <button type="submit">Logout</button>
+</form>
+
+<form id="form-documents" enctype="multipart/form-data">
+    <h3>Subir documentos para actualizar a premium</h3>
+    <div>
+        <label for="">Imágen de perfil</label>
+        <input type="file" name="imagenPerfil">
+    </div>
+    <div>
+        <label for="">Imágen del producto</label>
+        <input type="file" name="imagenProducto">
+    </div>
+    <div>
+        <label for="">Documentos de identificación, domicilio, estado de cuenta.</label>
+        <input type="file" name="documents" multiple>
+    </div>
+    <button type="submit">Subir archivos</button>
+</form>
+
+<div>
+    <h3>Lista de productos</h3>
+    <div>
+        <ul>
+            {{#each products}}
+            <li>{{this.nombre}} <a href="/api/products/detail/{{this._id}}">Detalles</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<div>
+    <a href="/api/cart/renderCart"><button>IR AL CARRITO</button></a>
+</div>
+
+<script src="/js/index.js"></script>
