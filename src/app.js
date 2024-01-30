@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 8080
 const path = require('path')
 const config = require('./config/config.dotenv')
 
@@ -84,9 +83,4 @@ app.use("/api/products", productsRouter)
 app.use("/api/sessions", sessionsRouter)
 app.use("/api/users", usersRouter)
 
-//Servidor escuchando
-app.listen(PORT, () => {
-    console.log(`Servidor is running on port ${PORT}`);
-})
-
-module.exports = {transporter, PORT}
+module.exports = {app, transporter}
