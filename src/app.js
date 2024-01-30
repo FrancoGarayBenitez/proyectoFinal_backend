@@ -77,6 +77,7 @@ const productsRouter = require('./routes/products.router')
 const sessionsRouter = require('./routes/sessions.router')
 const usersRouter = require('./routes/users.router')
 
+app.use("/", sessionsRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/ticket", ticketRouter)
 app.use("/api/products", productsRouter)
