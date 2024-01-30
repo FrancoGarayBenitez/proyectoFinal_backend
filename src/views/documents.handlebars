@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto">
+            <form id="form-documents" enctype="multipart/form-data">
+            <h3>Subir documentos para actualizar a premium</h3>
+            <div class="input-group p-2">
+                <label for="" class="p-2">Imágen de perfil</label>
+                <input type="file" class="form-control" name="imagenPerfil">
+            </div>
+            <div class="input-group p-2">
+                <label for="" class="p-2">Imágen del producto</label>
+                <input type="file" class="form-control" name="imagenProducto">
+            </div>
+            <div class="input-group p-2">
+                <label for="" class="p-2">Documentos de identificación, domicilio, estado de cuenta.</label>
+                <input type="file" class="form-control" name="documents" multiple>
+            </div>
+            <button type="submit" id="btn-subirDocumentos" class="btn btn-primary w-100">Subir documentos</button>
+            <div class="spinner" id="spinnerDocumentos" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/index.js"></script>

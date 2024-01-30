@@ -16,6 +16,9 @@ router.get("/:uid", usersControllers.userById)
 // Eliminar un usuario por inactividad
 router.delete("/inactivity", usersControllers.deleteUserForInactivity)
 
+// Renderizar vista de documentos para actualizar a premium
+router.get("/documents/premium", usersControllers.renderDocumentsPremium)
+
 // Subir archivos
 router.post("/:uid/documents", multerArchivos, usersControllers.subirArchivos)
 

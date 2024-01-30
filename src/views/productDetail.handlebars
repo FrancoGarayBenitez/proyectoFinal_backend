@@ -1,21 +1,26 @@
-<div>
-    <h2>{{product.nombre}}</h3>
-    <p>{{product.categoria}}</p>
-    <p>${{product.precio}}</p>
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto">
+            <h2>{{product.nombre}}</h3>
+                <p>{{product.categoria}}</p>
+                <p>${{product.precio}}</p>
 
-    {{#if faltaStock}}
-    <p>NO HAY STOCK DISPONIBLE</p>
-    {{else}}
-    <button id="{{product.stock}}" onclick="restar(this.id)">-</button>
-    <input id="inputQuantity" type="number" readonly value="1">
-    <button id="{{product.stock}}" onclick="sumar(this.id)">+</button>
-    <p id="stockMaximo"></p>
-    <button id="{{product._id}}" onclick="compra(this.id)">Agregar al Carrito</button>
-    {{/if}}
-</div>
+                {{#if faltaStock}}
+                <p>NO HAY STOCK DISPONIBLE</p>
+                {{else}}
+                <button id="{{product.stock}}" onclick="restar(this.id)">-</button>
+                <input id="inputQuantity" type="number" readonly value="1">
+                <button id="{{product.stock}}" onclick="sumar(this.id)">+</button>
 
-<div>
-    <a href="/api/cart/renderCart"><button>IR AL CARRITO</button></a>
+                <div class="row justify-content-center align-items-center">
+                    <p id="stockMaximo"></p>
+                    <button class="w-75 mt-1" id="{{product._id}}" onclick="compra(this.id)">Agregar al Carrito</button>
+                    <div class="spinner" id="spinner" style="display: none;"></div>
+                </div>
+                {{/if}}
+                <a href="/api/cart/renderCart" type="button" class="btn btn-success w-100 mt-3">IR AL CARRITO</a>
+        </div>
+    </div>
 </div>
 
 <script src="/js/productDetail.js"></script>

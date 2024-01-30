@@ -109,7 +109,7 @@ const createTicket = async (req, res) => {
             to: "+542615939115"
         })
 
-        res.status(200).json({message:"Gracias por su compra", result: ticketResult})
+        res.status(200).json({message:"Gracias por su compra. Revise su correo para ver el resumen.", result: ticketResult})
 
     } catch (error) {
         res.status(500).json({ message: "Error al crear ticket" });

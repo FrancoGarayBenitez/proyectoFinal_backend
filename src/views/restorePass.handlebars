@@ -1,7 +1,12 @@
-<form method="POST" action="{{token}}">
-
-    <label for="newPassword">Nueva contraseña</label>
-    <input type="password" name="newPassword" id="newPassword">
-
-    <button type="submit">Restaurar contraseña</button>
-</form>
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto">
+            <form method="POST" action="{{token}}">
+                <div class="input-group p-2">
+                    <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Escribe tu contraseña nueva">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Reestablecer contraseña</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -120,12 +120,16 @@ const deleteOneProduct = async (req, res) => {
         if(!foundProductInCart){
             res.status(404).json({ error: `El producto no existe en el carrito.` })
         }
-    
+        
+        // Devolver stock al producto
+        product.stock += foundProductInCart.quantity
+
         //Filtrando array para eliminar el producto indicado
         cart.products_list = cart.products_list.filter(p => !p.product._id.equals(pid))
     
-        //Actualizar carrito
+        //Actualizar carrito y producto
         await cartServices.updateCart(cart._id, cart)
+        await productsServices.updateProduct(product._id, product)
     
         //Buscar cart nuevamente para el populate
         cart = await cartServices.getCartById(cid)
@@ -146,6 +150,21 @@ const deleteAllProducts = async (req, res) => {
         let cart = await cartServices.getCartById(cid)
         if (!cart) {
             res.status(404).json({ error: `El carrito con el id proporcionado no existe` })
+        }
+
+        // Devolver stock de cada producto que se encuentre en el cart
+        let products = await productsServices.getProducts()
+        for (let i = 0; i < products.length; i++) {
+            
+            for (let j = 0; j < cart.products_list.length; j++) {
+                
+                if (products[i]._id.equals(cart.products_list[j].product._id)) {
+                    products[i].stock += cart.products_list[j].quantity
+                    await productsServices.updateProduct(products[i]._id, products[i])
+                }
+                
+            }
+            
         }
 
         //Vaciar carrito
@@ -176,15 +195,24 @@ const deleteAllCarts = async (req, res) => {
 const renderViewCart = async (req, res) => {
     try {
         let user = await usersServices.getUserById(req.session.user._id)
+        if (!user) return res.send({message: "User no encontrado."})
+
         let cart = await cartServices.getCartById(user.cart._id)
+        if (!cart) return res.send({message: "Cart no encontrado."})
+
+        let contieneProductos = false
+
+        if (cart.products_list.length > 0) {
+            contieneProductos = true    
+        }
 
         //Suma del precio total
         let sum = cart.products_list.reduce((acc, prev) => {
             acc += prev.product.precio * prev.quantity
             return acc
         }, 0)
-
-        res.render('cart', {cart, sum})
+        
+        res.render('cart', {cart, sum, contieneProductos})
     } catch (error) {
         res.status(500).json({ error: `Error al renderizar la vista de cart.` })
     }

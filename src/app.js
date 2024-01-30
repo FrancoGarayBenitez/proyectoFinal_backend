@@ -4,11 +4,6 @@ const PORT = process.env.PORT || 8080
 const path = require('path')
 const config = require('./config/config.dotenv')
 
-// // Cors
-// const cors = require('cors')
-// app.use(cors({origin: `http://localhost:${PORT}`, methods:['GET', 'POST', 'PUT']}))
-
-
 //Config Handlebars (Original)
 const handlebars = require('express-handlebars');
 app.engine("handlebars", handlebars.engine())
@@ -24,9 +19,9 @@ const MongoDBStore = require('connect-mongo');
 app.use(session({
     store: MongoDBStore.create({
         mongoUrl: config.mongo_url,
-        collection: 'mySessions',
-        ttl: 15
+        collection: 'sessions'
     }),
+    maxAge: 1000 * 60 * 60 * 7,
     secret: config.secretOrKey,
     resave: false,
     saveUninitialize: false

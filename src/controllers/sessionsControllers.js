@@ -85,7 +85,8 @@ const currentUser = async (req, res) => {
             full_name: user.full_name,
             age: user.age,
             email: user.email,
-            role: user.role
+            role: user.role,
+            last_connection: ''
         }
 
         // Buscar productos

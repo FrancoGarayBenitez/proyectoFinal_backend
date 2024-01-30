@@ -1,11 +1,10 @@
 const {productsServices, usersServices} = require('../repositories/index.repositories')
 const jwt = require('jsonwebtoken');
-const { isValidatePassword, createHash } = require('../utils')
 
 //Obtener los productos
 const getProducts = async (req, res) => {
     try {
-        const pageSize = parseInt(req.query.limit) || 10;  //Query limit opcional
+        const pageSize = parseInt(req.query.limit) || 20;  //Query limit opcional
         const page = parseInt(req.query.page) || 1;        //Query page opcional
 
         let filtro = {}

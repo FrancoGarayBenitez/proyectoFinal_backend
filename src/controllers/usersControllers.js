@@ -192,6 +192,15 @@ const subirArchivos = async (req, res) => {
 
 //--------------------------------------------------------------------//
 
+// Renderizar vista para subir documentación y actualizar a premium
+const renderDocumentsPremium = async (req, res) => {
+    try {
+        res.render('documents.handlebars')
+    } catch (error) {
+        res.status(500).json({message: "Error al renderizar vista de documentos."})
+    }
+}
+
 // Cambiar de rol
 const changeRole = async (req, res) => {
     try {
@@ -250,6 +259,7 @@ module.exports = {
     deleteUserForInactivity,
     deleteAllUsers,
     changeRole,
+    renderDocumentsPremium,
     subirArchivos,
     autorizedChangeRole
 }

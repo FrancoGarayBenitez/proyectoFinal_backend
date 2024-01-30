@@ -1,19 +1,35 @@
-<form method="POST" action="/api/sessions">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto bg-light p-5">
+            <form method="post" action="/api/sessions">
+                <div class="input-group p-2">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Escribe tu email">
+                </div>
+                <div class="input-group p-2">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Escribe tu contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+            </form>
+        </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-
-    <button type="submit">Login</button>
-</form>
-
-<a href="/api/sessions/restore">Restablecer contraseña</a>
-
-<div>
-    <p>No tienes cuenta ? <a href="/api/sessions/register">Registrarse</a></p>
+        <div class="col-auto">
+            <div>
+                <a href="/api/sessions/restore">Restablecer contraseña</a>
+            </div>
+            <div>
+                <p>No tienes cuenta ? <a href="/api/sessions/register">Registrarse</a></p>
+            </div>
+            <div>
+                <a href="/api/sessions/github"><button>Entrar con GitHub</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <a href="/api/sessions/github"><button>Entrar con GitHub</button></a>
-</div>
+
+
+
+
+
+
+

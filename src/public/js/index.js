@@ -1,16 +1,17 @@
-function irAlCarrito() {
-        fetch(`http://localhost:8080/api/cart/render`)
-        .then(data => data.json())
-        .then(data => {
-                console.log(data);       
-        })
-}
-
-
 let formDocuments = document.getElementById('form-documents')
 
 formDocuments.addEventListener('submit', e => {
         e.preventDefault()
+
+        const btnSubirDocumentos = document.getElementById('btn-subirDocumentos')
+        btnSubirDocumentos.style.display = 'none'
+
+        const spinnerDocumentos = document.getElementById('spinnerDocumentos')
+        spinnerDocumentos.style.display = 'block'
+
+        setTimeout(() => {
+                spinnerDocumentos.style.display = 'none'    
+        }, 4000)
 
         fetch(`http://localhost:8080/api/sessions/currentJson`)
         .then(data => data.json())
@@ -37,7 +38,7 @@ formDocuments.addEventListener('submit', e => {
                 .then(data => data.json())
                 .then(data => {
                     alert(data.message)
-                    window.location.reload()
+                    window.location.href = `http://localhost:8080/api/sessions/current`
                 })
         })
 })

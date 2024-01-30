@@ -62,6 +62,12 @@ paths:
         description: Id del producto que se desea actualizar.
         schema:
           $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/createProduct'
       responses:
         "200":
           description: Producto actualizado

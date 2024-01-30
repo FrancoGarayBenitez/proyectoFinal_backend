@@ -1,30 +1,58 @@
-<div>
-    <h1>SOY EL CARRITO</h1>
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center flex-column">
+        <div class="col-auto">
+            {{#if contieneProductos}}
 
-    <table>
-        <tr>
-            <th>NOMBRE</th>
-            <th>PRECIO POR UNIDAD</th>
-            <th>CANTIDAD</th>
-        </tr>
-        {{#each cart.products_list}}
-        <tr>
-            <td>{{this.product.nombre}}</td>
-            <td>${{this.product.precio}}</td>
-            <td>{{this.quantity}}</td>
-            <td><button id="{{this.product._id}}" onclick="deleteProductOfCart(this.id)">ELIMINAR</button></td>
-        </tr>
-        {{/each}}
-    </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">PRECIO POR UNIDAD</th>
+                        <th scope="col">CANTIDAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cart.products_list}}
+                    <tr>
+                        <td>{{this.product.nombre}}</td>
+                        <td>${{this.product.precio}}</td>
+                        <td>{{this.quantity}}</td>
+                        <td>
+                            <button id="{{this.product._id}}" onclick="deleteProductOfCart(this.id)">ELIMINAR</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
 
-    <div>
-        <h4>TOTAL: ${{sum}}</h4>
-        <button id="{{cart._id}}" onclick="deleteAllProductsOfCart(this.id)">VACIAR CARRITO</button>
+            <div class="row justify-content-center align-items-center flex-column">
+                <div class="spinner" id="spinnerLoader" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="col-auto m-3">
+            <div class="row justify-content-center align-items-center flex-column">
+                <h4 class="totalPrice">TOTAL: ${{sum}}</h4>
+                <button class="btn-vaciar" id="{{cart._id}}" onclick="deleteAllProductsOfCart(this.id)">VACIAR
+                    CARRITO</button>
+                <div class="spinner" id="spinnerVaciar" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="col-auto mt-3">
+            <button class="btn btn-success btn-comprar" id="{{cart._id}}" onclick="finalizePurchase(this.id)">CONFIRMAR
+                COMPRA</button>
+            <div class="spinner" id="spinnerComprar" style="display: none;"></div>
+        </div>
+
+        {{else}}
+
+        <h2>Aún no ha seleccionado ningún producto.</h2>
+
+        {{/if}}
     </div>
 
-    <div>
-        <button id="{{cart._id}}" onclick="finalizePurchase(this.id)">CONFIRMAR COMPRA</button>
-    </div>
+
 </div>
 
 <script src="/js/cart.js"></script>

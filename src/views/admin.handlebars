@@ -1,26 +1,38 @@
-<h3>Usuario logeado: {{session}}</h3>
-<h4>LISTA DE USUARIOS REGISTRADOS</h4>
-
-<ul>
-    {{#each data}}
-    <li>Nombre y Apellido: {{this.full_name}}</li>
-    <div>
-        <p> Email: {{this.email}}</p>
-        <p> Nivel de usuario: {{this.role}}</p>
-        <div>
-            <p>Cambiar Role: 
-            <select name="" id="{{this._id}}" onchange="cambiarRole(this.id)">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="premium">Premium</option>
-            </select>
-            </p>
-        </div>
-        <div>
-            <p>Eliminar usuario: <button id="{{this._id}}" onclick="eliminarUsuario(this.id)">Eliminar Usuario</button></p>
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto">
+            <h3>Usuario logeado: {{session}}</h3>
+            <h4>LISTA DE USUARIOS REGISTRADOS</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">NOMBRE Y APELLIDO</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">NIVEL DE USUARIO</th>
+                        <th scope="col">CAMBIAR ROLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.full_name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.role}}</td>
+                        <td>
+                            <select name="" id="{{this._id}}" onchange="cambiarRole(this.id)">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                                <option value="premium">Premium</option>
+                            </select>
+                        </td>
+                        <td><button id="{{this._id}}" onclick="eliminarUsuario(this.id)">Eliminar Usuario</button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
-    {{/each}}
-</ul>
+</div>
+
 
 <script src="/js/admin.js"></script>

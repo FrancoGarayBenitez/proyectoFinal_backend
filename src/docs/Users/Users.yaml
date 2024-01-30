@@ -94,7 +94,7 @@ components:
         email: optimus@mail.com
         age: 27
         password: "123"
-        role: admin || premium || undefined
+        role: admin || premium || user || undefined
     loginUser:
       type: object
       properties:
