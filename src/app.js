@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const config = require('./config/config.dotenv')
+const PORT = process.env.PORT || 8080
 
 //Config Handlebars (Original)
 const handlebars = require('express-handlebars');
@@ -77,11 +78,15 @@ const productsRouter = require('./routes/products.router')
 const sessionsRouter = require('./routes/sessions.router')
 const usersRouter = require('./routes/users.router')
 
-app.use("/", sessionsRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/ticket", ticketRouter)
 app.use("/api/products", productsRouter)
 app.use("/api/sessions", sessionsRouter)
 app.use("/api/users", usersRouter)
 
-module.exports = {app, transporter}
+//Servidor escuchando
+app.listen(PORT, () => {
+    console.log(`Servidor is running on port ${PORT}`);
+})
+
+module.exports = {transporter}
