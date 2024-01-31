@@ -2,7 +2,7 @@ const chai = require('chai')
 const supertest = require('supertest')
 
 const expect = chai.expect
-const requester = supertest("http://localhost:8080")
+const requester = supertest("https://myecommerce-api-6zkf.onrender.com")
 
 describe("Testing ecommerce proyecto final.", () => {
     // Mocks
@@ -56,7 +56,7 @@ describe("Testing ecommerce proyecto final.", () => {
     // CONTEXTO SESSIONS
     describe("Testing sessions", () => {
         it("Debe registrar un usuario.", async () => {
-            const {statusCode, ok, _body} = await requester.post('/api/sessions/register').send(mockUser)
+            const {statusCode, ok, _body} = await requester.post('/register').send(mockUser)
 
             createdUserId = _body.payload._id
 
@@ -67,7 +67,7 @@ describe("Testing ecommerce proyecto final.", () => {
         it("Debe logear correctamente al usuario y devolver una cookie", async () => {
 
             // Enviar datos del usuario para el login
-            const result = await requester.post('/api/sessions').send(mockUserLogin)
+            const result = await requester.post('/').send(mockUserLogin)
 
             // El endpoint devuelve una cookie
             const cookieResult = result.headers['set-cookie'][0]
@@ -87,7 +87,7 @@ describe("Testing ecommerce proyecto final.", () => {
         it("Debe enviar la cookie del usuario y desestructurar éste.", async () => {
 
             // Enviar cookie guardada
-            const {_body} = await requester.get('/api/sessions/currentJson')
+            const {_body} = await requester.get('/currentJson')
             .set('Cookie', [`${cookie.name} = ${cookie.value}`])
 
             // El método current debería devolver el correo del usuario
@@ -179,10 +179,10 @@ describe("Testing ecommerce proyecto final.", () => {
             }
 
             // Registro y login del usuario con su respectivo token cookie
-            const userRegister = await requester.post('/api/sessions/register').send(mockUser)
+            const userRegister = await requester.post('/register').send(mockUser)
             expect(userRegister.statusCode).eql(200)
 
-            const userLogin = await requester.post('/api/sessions').send(mockUserLogin)
+            const userLogin = await requester.post('/').send(mockUserLogin)
 
             const cookieResult = userLogin.headers['set-cookie'][0]
             expect(cookieResult).to.be.ok

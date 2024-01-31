@@ -1,6 +1,4 @@
 const {usersServices} = require('../repositories/index.repositories')
-const jwt = require('jsonwebtoken');
-const { isValidatePassword, createHash } = require('../utils')
 const {getUserDTO} = require('../dao/DTOs/user.dto')
 
 // Obtener lista de usuarios

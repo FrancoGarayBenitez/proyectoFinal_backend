@@ -13,7 +13,7 @@ formDocuments.addEventListener('submit', e => {
                 spinnerDocumentos.style.display = 'none'    
         }, 4000)
 
-        fetch(`https://myecommerce-api-6zkf.onrender.com/api/sessions/currentJson`)
+        fetch(`https://myecommerce-api-6zkf.onrender.com/currentJson`)
         .then(data => data.json())
         .then(data => {
                 let usuario = data.payload
@@ -38,7 +38,7 @@ formDocuments.addEventListener('submit', e => {
                 .then(data => data.json())
                 .then(data => {
                     alert(data.message)
-                    window.location.href = `https://myecommerce-api-6zkf.onrender.com/api/sessions/current`
+                    window.location.href = `https://myecommerce-api-6zkf.onrender.com/current`
                 })
         })
 })

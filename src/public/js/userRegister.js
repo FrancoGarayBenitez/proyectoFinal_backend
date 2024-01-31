@@ -12,7 +12,7 @@ formSignUp.addEventListener('submit', e => {
         role: formSignUp.role.value
     }
 
-    fetch(`https://myecommerce-api-6zkf.onrender.com/api/sessions/register`, {
+    fetch(`https://myecommerce-api-6zkf.onrender.com/register`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
@@ -21,6 +21,6 @@ formSignUp.addEventListener('submit', e => {
         .then(data => data.json())
         .then(json => {
             alert(json.message)
-            window.location = `https://myecommerce-api-6zkf.onrender.com/api/sessions/`
+            window.location = `https://myecommerce-api-6zkf.onrender.com/`
         })
 })

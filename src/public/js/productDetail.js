@@ -31,7 +31,7 @@ function compra(pid) {
         spinner.style.display = 'none'        
     }, 4000)
     
-    fetch(`https://myecommerce-api-6zkf.onrender.com/api/sessions/currentJson`)
+    fetch(`https://myecommerce-api-6zkf.onrender.com/currentJson`)
     .then(data => data.json())
     .then(user => {
         let usuario = user.payload

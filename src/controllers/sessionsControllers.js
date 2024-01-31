@@ -62,7 +62,7 @@ const authenticateWithJwt = async (req, res) => {
             httpOnly: true
         })
 
-        res.redirect("/api/sessions/current")
+        res.redirect("/current")
 
     } catch (error) {
         res.status(500).send("Error al logearse.")
@@ -73,7 +73,7 @@ const authenticateWithJwt = async (req, res) => {
 const currentUser = async (req, res) => {
     try {
         if (!req.user) {
-            return res.redirect('/api/sessions');
+            return res.redirect('/');
         }
 
         //Buscar usuario en la base.
@@ -103,7 +103,7 @@ const currentUser = async (req, res) => {
 const currentUserJson = (req, res) => {
     try {
         if (!req.user) {
-            return res.redirect('/api/sessions');
+            return res.redirect('/');
         }
 
         res.send({payload: req.user})
@@ -126,7 +126,7 @@ const authenticateWithGitHub = async (req, res) => {
         httpOnly: true
     })
 
-    res.redirect("/api/sessions/current")
+    res.redirect("/current")
 }
 
 //--------------------------------------------------------------------//
@@ -173,7 +173,7 @@ const emailToRestorePassword = async (req, res) => {
             <div>
             <h1>Restablecer contraseña</h1>
             <p>Ingrese en el siguiente enlace: 
-            <a href="http://localhost:8080/api/sessions/restore/${token}">Haga click aquí</a>
+            <a href="https://myecommerce-api-6zkf.onrender.com/restore/${token}">Haga click aquí</a>
             </p>
             </div>
             `
@@ -219,11 +219,11 @@ const changePassword = async (req, res) => {
 
         //Redirigir para logearse.
         console.log("Contraseña cambiada correctamente.");
-        res.redirect("/api/sessions");
+        res.redirect("/");
 
     } catch (error) {
         console.log("Token expirado");
-        res.redirect('/api/sessions/restore')
+        res.redirect('/restore')
     }
 }
 
@@ -238,7 +238,7 @@ const destroySession = async (req, res) => {
 
     req.session.destroy(err => {
         if (!err) {
-            res.redirect('/api/sessions')
+            res.redirect('/')
         } else {
             res.send("Error al intentar salir.")
         }

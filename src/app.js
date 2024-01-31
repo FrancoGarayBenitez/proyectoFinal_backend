@@ -85,7 +85,7 @@ app.use(cors())
 app.use("/api/cart", cartRouter)
 app.use("/api/ticket", ticketRouter)
 app.use("/api/products", productsRouter)
-app.use("/api/sessions", sessionsRouter)
+app.use("/", sessionsRouter)
 app.use("/api/users", usersRouter)
 
 //Servidor escuchando
