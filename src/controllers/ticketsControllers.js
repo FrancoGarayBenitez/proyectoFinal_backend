@@ -28,6 +28,8 @@ const getTicketById = async(req, res) => {
 // Crear ticket
 const createTicket = async (req, res) => {
     try {
+        let {numCelular} = req.body
+
         let {cid} = req.params
         let resultCart = await cartServices.getCartById(cid)
         if (!resultCart) res.status(404).json({ error: "El cart con el id proporcionado no existe" })
@@ -106,7 +108,7 @@ const createTicket = async (req, res) => {
             body: `¡ Gracias por su compra ! Puede ver el resumen en su correo.
             Número de orden: ${ticketResult.code}`,
             from: config.twilio_sms_number,
-            to: "+542615939115"
+            to: `+54${numCelular}`
         })
 
         res.status(200).json({message:"Gracias por su compra. Revise su correo para ver el resumen.", result: ticketResult})

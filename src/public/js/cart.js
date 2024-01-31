@@ -73,8 +73,16 @@ function finalizePurchase(cid) {
         spinnerComprar.style.display = 'none'       
     }, 4000)
 
+    const numCelular = document.getElementById('numCelular')
+
+    body = {
+        numCelular: numCelular.value
+    }
+
     fetch(`https://myecommerce-api-6zkf.onrender.com/api/ticket/${cid}/purchase`, {
-        method: 'POST'
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
     })
     .then(data => data.json())
     .then(data => {
