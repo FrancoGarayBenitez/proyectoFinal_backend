@@ -12,7 +12,7 @@ router.get("/", sessionsControllers.renderViewLogin)
 //--------------------------------------------------------------------//
 
 //Registrar usuario (Estrategia local)
-router.post("/register", passport.authenticate('local', { failureRedirect: "/api/sessions/failRegister" }), sessionsControllers.registerUser)
+router.post("/register", passport.authenticate('local', { failureRedirect: "/failRegister" }), sessionsControllers.registerUser)
 
 //Ruta por si no se logra hacer el passport register.
 router.get('/failRegister', sessionsControllers.failRegister)
@@ -33,7 +33,7 @@ router.get("/currentJson", passport.authenticate("jwt", { session: false }), ses
 //Autenticación. Estrategia con GitHub.
 router.get("/github", passport.authenticate("github", { scope: ["user:email"] }), async (req, res) => { })
 
-router.get("/githubcallback", passport.authenticate("github", { failureRedirect: "/api/sessions/" }), sessionsControllers.authenticateWithGitHub)
+router.get("/githubcallback", passport.authenticate("github", { failureRedirect: "/" }), sessionsControllers.authenticateWithGitHub)
 
 //--------------------------------------------------------------------//
 
