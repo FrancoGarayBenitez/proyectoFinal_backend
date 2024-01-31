@@ -78,6 +78,10 @@ const productsRouter = require('./routes/products.router')
 const sessionsRouter = require('./routes/sessions.router')
 const usersRouter = require('./routes/users.router')
 
+// Cors
+const cors = require('cors')
+app.use(cors())
+
 app.use("/api/cart", cartRouter)
 app.use("/api/ticket", ticketRouter)
 app.use("/api/products", productsRouter)

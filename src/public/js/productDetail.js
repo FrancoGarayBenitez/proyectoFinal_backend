@@ -21,36 +21,6 @@ function restar(stock) {
     
 }
 
-// function compra(pid) {
-//     fetch(`http://localhost:8080/api/sessions/currentJson`)
-//     .then(data => data.json())
-//     .then(user => {
-//         let usuario = user.payload
-        
-//         fetch(`http://localhost:8080/api/users/${usuario.id}`)
-//         .then(data => data.json())
-//         .then(data => {
-//             let user = data.payload
-//             let cid = user.cart._id
-//             let body = {
-//                 quantity: parseInt(inputQuantity.value)
-//             }
-
-//             fetch(`http://localhost:8080/api/cart/${cid}/${pid}`, {
-//                 method: "POST",
-//                 headers: {'Content-Type': 'application/json'},
-//                 body: JSON.stringify(body)
-//             })
-//             .then(data => data.json())
-//             .then(data => {
-//                 alert(data.message)
-//                 window.location.reload()
-//             })
-
-//         })
-//     })
-// }
-
 
 function compra(pid) {
 
