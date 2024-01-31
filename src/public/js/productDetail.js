@@ -31,12 +31,12 @@ function compra(pid) {
         spinner.style.display = 'none'        
     }, 4000)
     
-    fetch(`http://localhost:8080/api/sessions/currentJson`)
+    fetch(`https://myecommerce-api-6zkf.onrender.com/api/sessions/currentJson`)
     .then(data => data.json())
     .then(user => {
         let usuario = user.payload
         
-        fetch(`http://localhost:8080/api/users/${usuario.id}`)
+        fetch(`https://myecommerce-api-6zkf.onrender.com/api/users/${usuario.id}`)
         .then(data => data.json())
         .then(data => {
             let user = data.payload
@@ -45,7 +45,7 @@ function compra(pid) {
                 quantity: parseInt(inputQuantity.value)
             }
 
-            fetch(`http://localhost:8080/api/cart/${cid}/${pid}`, {
+            fetch(`https://myecommerce-api-6zkf.onrender.com/api/cart/${cid}/${pid}`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(body)
