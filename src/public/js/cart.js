@@ -50,7 +50,7 @@ function deleteAllProductsOfCart(cid) {
         spinner.style.display = 'none'       
     }, 4000)
 
-    fetch(`http://localhost:8080/api/cart/${cid}`, {
+    fetch(`https://myecommerce-api-6zkf.onrender.com/api/cart/${cid}`, {
         method: 'DELETE'
     })
     .then(data => data.json())
@@ -73,7 +73,7 @@ function finalizePurchase(cid) {
         spinnerComprar.style.display = 'none'       
     }, 4000)
 
-    fetch(`http://localhost:8080/api/ticket/${cid}/purchase`, {
+    fetch(`https://myecommerce-api-6zkf.onrender.com/api/ticket/${cid}/purchase`, {
         method: 'POST'
     })
     .then(data => data.json())

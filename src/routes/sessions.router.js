@@ -24,7 +24,6 @@ router.post("/", sessionsControllers.authenticateWithJwt)
 
 //Ruta para renderizar vista con los datos del usuario.
 router.get("/current", passport.authenticate("jwt", { session: false }), sessionsControllers.currentUser)
-// router.get("/current", sessionsControllers.currentUser)
 
 // Ruta para devolver el actual usuario en JSON
 router.get("/currentJson", passport.authenticate("jwt", { session: false }), sessionsControllers.currentUserJson)

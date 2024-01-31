@@ -1,5 +1,5 @@
 function eliminarUsuario(uid) {
-    fetch(`http://localhost:8080/api/users/${uid}`, {
+    fetch(`https://myecommerce-api-6zkf.onrender.com/api/users/${uid}`, {
             method: 'DELETE'
     })
     .then(result => result.json())
@@ -18,7 +18,7 @@ function cambiarRole(uid) {
             option: option.value
     }
 
-    fetch(`http://localhost:8080/api/users`, {
+    fetch(`https://myecommerce-api-6zkf.onrender.com/api/users`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(optionSelected)
